@@ -18,11 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\Database\Database.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\Service\Service.csproj" />
   </ItemGroup>
 
 </Project>

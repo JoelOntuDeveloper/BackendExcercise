@@ -80,3 +80,21 @@ CREATE TABLE Movimiento (
     CONSTRAINT FK_Movimiento_Cuenta FOREIGN KEY (CuentaId) REFERENCES Cuenta(CuentaId)
 );
 GO
+
+insert into Persona (Nombre, Genero, Edad, Identificacion, Direccion, Telefono) values ('Jose Lema', 'M', 25, '1742538690','Otavalo sn y principal', '098254785');
+insert into Persona (Nombre, Genero, Edad, Identificacion, Direccion, Telefono) values ('Marianela Montalvo', 'F', 25, '1742948690','Amazonas y NNUU', '097548965');
+insert into Persona (Nombre, Genero, Edad, Identificacion, Direccion, Telefono) values ('Juan Osorio', 'M', 25, '1742558690','13 junio y Equinoccial', '098874587');
+go
+
+insert into Cliente (ClienteId, Contrasenia, Estado) values (1, '1234', 1);
+insert into Cliente (ClienteId, Contrasenia, Estado) values (2, '5678', 1);
+insert into Cliente (ClienteId, Contrasenia, Estado) values (3, '1245', 1);
+go
+
+
+insert into Cuenta(ClienteId, NumeroCuenta, TipoCuenta, SaldoInicial, Estado) values (1, '478758', 'AHORROS', 2000, 1);
+insert into Cuenta(ClienteId, NumeroCuenta, TipoCuenta, SaldoInicial, Estado) values (2, '225487', 'CORRIENTE', 100, 1);
+insert into Cuenta(ClienteId, NumeroCuenta, TipoCuenta, SaldoInicial, Estado) values (3, '495878', 'AHORROS', 0, 1);
+insert into Cuenta(ClienteId, NumeroCuenta, TipoCuenta, SaldoInicial, Estado) values (2, '496825', 'AHORROS', 540, 1);
+go
+

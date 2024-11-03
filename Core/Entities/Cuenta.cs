@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core.Entities {
+﻿namespace Core.Entities {
     public class Cuenta {
 
         public Cuenta() {
-            Movimientos = new HashSet<Movimiento>();
+            Movimiento = new HashSet<Movimiento>();
         }
 
         public int CuentaId { get; set; }
@@ -19,6 +13,6 @@ namespace Core.Entities {
         public bool Estado { get; set; }
 
         public virtual Cliente Cliente { get; set; } = null!;
-        public virtual ICollection<Movimiento> Movimientos { get; set; }
+        public virtual ICollection<Movimiento> Movimiento { get; set; }
     }
 }

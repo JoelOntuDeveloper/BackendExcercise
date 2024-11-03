@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Core.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace Database.Enities {
+namespace Database
+{
     public partial class BankDbContext : DbContext
     {
         public BankDbContext()
@@ -11,13 +13,6 @@ namespace Database.Enities {
             : base(options)
         {
         }
-
-//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-//            if (!optionsBuilder.IsConfigured) {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-//                optionsBuilder.UseSqlServer("Server=MSI;Database=Bank;Trusted_Connection=True;");
-//            }
-//        }
 
         public virtual DbSet<Cliente> Clientes { get; set; } = null!;
         public virtual DbSet<Cuenta> Cuentas { get; set; } = null!;
@@ -38,7 +33,7 @@ namespace Database.Enities {
 
                 entity.Property(e => e.Contrasenia).HasMaxLength(255);
 
-                entity.HasOne(d => d.ClienteNavigation)
+                entity.HasOne(d => d.Persona)
                     .WithOne(p => p.Cliente)
                     .HasForeignKey<Cliente>(d => d.ClienteId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
@@ -47,6 +42,8 @@ namespace Database.Enities {
 
             modelBuilder.Entity<Cuenta>(entity =>
             {
+                entity.ToTable("Cuenta");
+
                 entity.HasKey(e => e.CuentaId)
                     .HasName("PK__Cuenta__40072E81D3C5F8A9");
 
@@ -84,7 +81,7 @@ namespace Database.Enities {
                 entity.Property(e => e.Valor).HasColumnType("decimal(18, 2)");
 
                 entity.HasOne(d => d.Cuenta)
-                    .WithMany(p => p.Movimientos)
+                    .WithMany(p => p.Movimiento)
                     .HasForeignKey(d => d.CuentaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Movimiento_Cuenta");
