@@ -57,13 +57,15 @@ namespace Customers.API.Controllers {
             return NoContent();
         }
 
-        [HttpGet("identificacion/{identificacion}")]
+        #region Bussines Logic
+        [HttpGet("searchByIdentificacion/{identificacion}")]
         public async Task<ActionResult<Cliente>> GetClienteByIdentificacion(string identificacion) {
             var cliente = await _clienteService.GetClienteByIdentificacionAsync(identificacion);
             if (cliente == null) {
                 return NotFound();
             }
             return Ok(cliente);
-        }
+        } 
+        #endregion
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Core.Interfaces.IServices;
 using Microsoft.AspNetCore.Mvc;
-using Service.CRUDServices;
 using Util.DTO;
 
 namespace Accounts.API.Controllers {
@@ -14,6 +13,7 @@ namespace Accounts.API.Controllers {
             _movimientoService = movimientoService;
         }
 
+        #region CRUD
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MovimientoDTO>>> GetAllMovimientos() {
             var movimientos = await _movimientoService.GetAllMovimientosAsync();
@@ -30,6 +30,14 @@ namespace Accounts.API.Controllers {
         public async Task<ActionResult> CreateCuenta([FromBody] MovimientoDTO movimientoDto) {
             await _movimientoService.CreateMovimientoAsync(movimientoDto);
             return Ok(movimientoDto);
-        }
+        } 
+        #endregion
+
+        //[HttpGet]
+        //public async Task<ActionResult<EstadoCuentaDTO>> GetEstadoCuenta(string fechaInicio, string fechaFin, string identification) {
+        //    var estadoCuenta = await _movimientoService.GetEstadoCuentaAsync(fechaInicio, fechaFin, identification);
+
+        //    return Ok(estadoCuenta);
+        //}
     }
 }

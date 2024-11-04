@@ -3,7 +3,7 @@ using Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Database.Repositories {
-    public class MovimientoRepository: Repository<Movimiento>, IMovimientoRepository
+    public class MovimientoRepository : Repository<Movimiento>, IMovimientoRepository
     {
         public MovimientoRepository(BankDbContext context) : base(context) {
         }
@@ -21,10 +21,12 @@ namespace Database.Repositories {
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<Movimiento?> GetMovimientoByCuentaIdAndFechaAndTipoMovimiento(int cuentaId, DateTime fecha, string tipoMovimiento) {
+        public async Task<IEnumerable<Movimiento>> GetMovimientosByFechasAndClienteId(DateTime fechaInicio, DateTime fechaFin, int clienteId) {
             return await _context.Movimientos
-                .Where(movimiento => movimiento.CuentaId == cuentaId && movimiento.Fecha.Equals(fecha) && movimiento.TipoMovimiento.Equals(tipoMovimiento))
-                .FirstOrDefaultAsync();
+                .Include(mov => mov.Cuenta)
+                .Where(mov => mov.Cuenta.ClienteId == clienteId && mov.Fecha >= fechaInicio && mov.Fecha <= fechaFin)
+                .OrderBy(mov => mov.CuentaId)
+                .ThenByDescending(mov => mov.Fecha).ToListAsync();
         }
     }
 }

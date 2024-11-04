@@ -3,7 +3,7 @@ using Core.Interfaces.IServices;
 using Core.Interfaces;
 using AutoMapper;
 using Util.DTO;
-using Service.Exceptions;
+using Common.Exceptions;
 
 namespace Service.CRUDServices
 {
@@ -153,7 +153,11 @@ namespace Service.CRUDServices
                     throw new NotFoundException($"Cliente con Identificación {identificacion} no encontrado.");
                 }
 
-                return _mapper.Map<ClienteDTO>(cliente);
+                ClienteDTO clienteDTO = _mapper.Map<ClienteDTO>(cliente.Persona);
+                clienteDTO.ClienteId = cliente.ClienteId;
+                clienteDTO.Estado = cliente.Estado;
+
+                return clienteDTO;
 
             }
             catch (NotFoundException)
@@ -162,7 +166,7 @@ namespace Service.CRUDServices
             }
             catch (Exception ex)
             {
-                throw new ValidationException("Error al eliminar al cliente. " + ex.Message);
+                throw new ValidationException("Error al buscar al cliente. " + ex.Message);
             }
         }
     }

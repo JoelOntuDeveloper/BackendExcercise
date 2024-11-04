@@ -1,9 +1,9 @@
 ﻿using System.Net;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Common.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Service.Exceptions;
 
 namespace Common.Middlewares {
     public class ErrorHandlerMiddleware {
@@ -22,6 +22,8 @@ namespace Common.Middlewares {
                 await HandleExceptionAsync(context, ex, HttpStatusCode.NotFound);
             } catch (ValidationException ex) {
                 await HandleExceptionAsync(context, ex, HttpStatusCode.BadRequest);
+            } catch (FormatException ex) {
+                await HandleExceptionAsync(context, ex, HttpStatusCode.Conflict);
             } catch (Exception ex) {
                 await HandleExceptionAsync(context, ex, HttpStatusCode.InternalServerError);
             }
@@ -33,7 +35,7 @@ namespace Common.Middlewares {
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)statusCode;
 
-            var errorResponse = new { error = exception.Message, details = exception.StackTrace };
+            var errorResponse = new { error = exception.Message };
             var options = new JsonSerializerOptions {
                 ReferenceHandler = ReferenceHandler.IgnoreCycles,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull

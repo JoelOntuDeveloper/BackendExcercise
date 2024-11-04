@@ -8,5 +8,6 @@ namespace Core.Interfaces.IServices {
         Task<IEnumerable<MovimientoDTO>> GetAllMovimientosAsync();
         Task CreateMovimientoAsync(MovimientoDTO Movimiento);
         #endregion
+
     }
 }

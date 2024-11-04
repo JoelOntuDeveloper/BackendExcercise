@@ -1,14 +1,12 @@
 ﻿using AutoMapper;
 using Core.Entities;
-using Core.Interfaces;
 using Core.Interfaces.IServices;
-using Service.Exceptions;
+using Core.Interfaces;
 using Util.DTO;
+using Common.Exceptions;
 
-namespace Service.CRUDServices
-{
-    public class CuentaService : ICuentaService
-    {
+namespace Accounts.Service.CRUDServices {
+    public class CuentaService : ICuentaService {
         private readonly ICuentaRepository _cuentaRepository;
         private readonly IMapper _mapper;
 
@@ -20,7 +18,7 @@ namespace Service.CRUDServices
         #region CRUD
         public async Task<IEnumerable<CuentaDTO>> GetAllCuentasAsync() {
 
-            try { 
+            try {
                 var cuentas = await _cuentaRepository.GetAllAsync();
                 return _mapper.Map<IEnumerable<CuentaDTO>>(cuentas);
             } catch (NotFoundException) {
@@ -45,8 +43,7 @@ namespace Service.CRUDServices
             }
         }
 
-        public async Task CreateCuentaAsync(CuentaDTO cuentaDTO)
-        {
+        public async Task CreateCuentaAsync(CuentaDTO cuentaDTO) {
             var cuenta = _mapper.Map<Cuenta>(cuentaDTO);
             await _cuentaRepository.AddAsync(cuenta);
         }
@@ -70,10 +67,8 @@ namespace Service.CRUDServices
             }
         }
 
-        public async Task DeleteCuentaAsync(int id)
-        {
-            try
-            {
+        public async Task DeleteCuentaAsync(int id) {
+            try {
                 var cuenta = await _cuentaRepository.GetByIdAsync(id);
 
                 if (cuenta == null) { throw new NotFoundException($"Cuenta con ID {id} no encontrado."); }
@@ -81,13 +76,9 @@ namespace Service.CRUDServices
                 cuenta.Estado = false;
 
                 await _cuentaRepository.UpdateAsync(cuenta);
-            }
-            catch (NotFoundException)
-            {
+            } catch (NotFoundException) {
                 throw;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw new ValidationException("Error al eliminar la cuenta. " + ex.Message);
             }
         }

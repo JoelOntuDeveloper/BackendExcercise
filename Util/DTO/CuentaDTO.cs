@@ -7,14 +7,15 @@ namespace Util.DTO {
         public int CuentaId { get; set; }
         public int ClienteId { get; set; }
         public string NumeroCuenta { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? NombreCliente { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? Identificacion { get; set; }
         public string TipoCuenta { get; set; }
         public decimal SaldoInicial { get; set; }
         public decimal SaldoDisponible { get; set; }
         public bool Estado { get; set; }
 
-        [JsonIgnore]
         public IList<MovimientoDTO>? Movimientos { get; set; } = null!;
     }
 }

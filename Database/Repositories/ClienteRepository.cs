@@ -21,7 +21,9 @@ namespace Database.Repositories {
         }
 
         public async Task<Cliente?> GetByIdentificacionAsync(string identificacion) {
-            return await _context.Clientes.FirstOrDefaultAsync(c => c.Persona.Identificacion == identificacion);
+            return await _context.Clientes
+                .Include(c => c.Persona)
+                .FirstOrDefaultAsync(c => c.Persona.Identificacion == identificacion);
         }
     }
 }

@@ -5,5 +5,7 @@ namespace Core.Interfaces {
     {
         Task<Movimiento> GetLastMovimientoByCuentaId(int cuentaId);
 
+        Task<IEnumerable<Movimiento>> GetMovimientosByFechasAndClienteId(DateTime fechaInicio, DateTime fechaFin, int clienteId);
+
     }
 }

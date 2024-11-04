@@ -8,7 +8,7 @@ namespace Core.Interfaces.IServices {
         Task<IEnumerable<CuentaDTO>> GetAllCuentasAsync();
         Task CreateCuentaAsync(CuentaDTO cuenta);
         Task UpdateCuentaAsync(CuentaDTO cuenta);
-        Task DeleteCuentaAsync(int id); 
+        Task DeleteCuentaAsync(int id);
         #endregion
     }
 }
