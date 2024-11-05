@@ -70,12 +70,16 @@ namespace Service.CRUDServices
         public async Task CreateClienteAsync(ClienteDTO clienteDto)
         {
 
-            var cliente = _mapper.Map<Cliente>(clienteDto);
-            var persona = _mapper.Map<Persona>(clienteDto);
+            try {
+                var cliente = _mapper.Map<Cliente>(clienteDto);
+                var persona = _mapper.Map<Persona>(clienteDto);
 
-            cliente.Persona = persona;
+                cliente.Persona = persona;
 
-            await _clienteRepository.AddAsync(cliente);
+                await _clienteRepository.AddAsync(cliente);
+            } catch (Exception ex) {
+                throw new ValidationException("Error al crear al cliente. " + ex.Message);
+            }
         }
 
         public async Task UpdateClienteAsync(ClienteDTO clienteDto)
