@@ -371,7 +371,7 @@ namespace Customers.Service.Test {
             };
 
             var persona3 = new Persona {
-                Id = 2,
+                Id = 3,
                 Nombre = "Juan Osorio",
                 Genero = "M",
                 Edad = 25,

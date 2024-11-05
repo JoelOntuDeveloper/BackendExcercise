@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts.API", "Accounts.AP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts.Service", "Accounts.Service\Accounts.Service.csproj", "{8867F9FA-E1CB-46F1-96D7-38CD28A66114}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customers.Service.Test", "Customers.Service.Test\Customers.Service.Test.csproj", "{EE4941B2-19E4-4CDB-8A9C-958CE478BA5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customers.Service.Test", "Customers.Service.Test\Customers.Service.Test.csproj", "{EE4941B2-19E4-4CDB-8A9C-958CE478BA5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customers.API.IntegrationTest", "Customers.API.IntegrationTest\Customers.API.IntegrationTest.csproj", "{67EE9F6B-64BB-458E-AACD-8B48E9422B9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{EE4941B2-19E4-4CDB-8A9C-958CE478BA5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE4941B2-19E4-4CDB-8A9C-958CE478BA5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE4941B2-19E4-4CDB-8A9C-958CE478BA5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67EE9F6B-64BB-458E-AACD-8B48E9422B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67EE9F6B-64BB-458E-AACD-8B48E9422B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67EE9F6B-64BB-458E-AACD-8B48E9422B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67EE9F6B-64BB-458E-AACD-8B48E9422B9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
