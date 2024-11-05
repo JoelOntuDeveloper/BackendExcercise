@@ -1,0 +1,388 @@
+{
+	"info": {
+		"_postman_id": "66bdc240-b11d-4f10-8c24-491663399c54",
+		"name": "Backend Exercise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23265366"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "Cliente",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{urlCliente}}/api/Cliente",
+									"host": [
+										"{{urlCliente}}"
+									],
+									"path": [
+										"api",
+										"Cliente"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{urlCliente}}/api/Cliente/1",
+									"host": [
+										"{{urlCliente}}"
+									],
+									"path": [
+										"api",
+										"Cliente",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Cliente",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nombre\": \"Joel Ontuna\",\r\n  \"direccion\": \"Quito\",\r\n  \"genero\": \"M\",\r\n  \"telefono\": \"0999999999\",\r\n  \"contrasenia\": \"1234\",\r\n  \"identificacion\": \"1745869322\",\r\n  \"edad\": 28,\r\n  \"estado\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{urlCliente}}/api/Cliente",
+									"host": [
+										"{{urlCliente}}"
+									],
+									"path": [
+										"api",
+										"Cliente"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Cliente",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"clienteId\": 3,\r\n  \"nombre\": \"Joel Ontuna\",\r\n  \"direccion\": \"Quito\",\r\n  \"genero\": \"M\",\r\n  \"telefono\": \"0999999999\",\r\n  \"contrasenia\": \"1234\",\r\n  \"identificacion\": \"1745869322\",\r\n  \"edad\": 28,\r\n  \"estado\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{urlCliente}}/api/Cliente/3",
+									"host": [
+										"{{urlCliente}}"
+									],
+									"path": [
+										"api",
+										"Cliente",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Cliente",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{urlCliente}}/api/Cliente/3",
+									"host": [
+										"{{urlCliente}}"
+									],
+									"path": [
+										"api",
+										"Cliente",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search By Identificacion",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{urlCliente}}/api/Cliente/searchByIdentificacion/1742538690",
+									"host": [
+										"{{urlCliente}}"
+									],
+									"path": [
+										"api",
+										"Cliente",
+										"searchByIdentificacion",
+										"1742538690"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cuenta",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{urlCuenta}}/api/Cuenta",
+									"host": [
+										"{{urlCuenta}}"
+									],
+									"path": [
+										"api",
+										"Cuenta"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{urlCuenta}}/api/Cuenta/1",
+									"host": [
+										"{{urlCuenta}}"
+									],
+									"path": [
+										"api",
+										"Cuenta",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Cuenta",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"clienteId\":3,\r\n  \"numeroCuenta\":\"123456\",\r\n  \"tipoCuenta\":\"AHORROS\",\r\n  \"saldoInicial\": 10.25,\r\n  \"estado\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{urlCuenta}}/api/Cuenta",
+									"host": [
+										"{{urlCuenta}}"
+									],
+									"path": [
+										"api",
+										"Cuenta"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Cuenta",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"clienteId\":2,\r\n  \"numeroCuenta\":\"1234567890\",\r\n  \"tipoCuenta\":\"AHORROS\",\r\n  \"saldoInicial\": 10.25,\r\n  \"estado\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{urlCuenta}}/api/Cuenta/3",
+									"host": [
+										"{{urlCuenta}}"
+									],
+									"path": [
+										"api",
+										"Cuenta",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Cuenta",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{urlCuenta}}/api/Cuenta/3",
+									"host": [
+										"{{urlCuenta}}"
+									],
+									"path": [
+										"api",
+										"Cuenta",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Movimientos",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{urlCuenta}}/api/Movimiento",
+									"host": [
+										"{{urlCuenta}}"
+									],
+									"path": [
+										"api",
+										"Movimiento"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Movimiento",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"valor\": 20,\r\n  \"numeroCuenta\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{urlCuenta}}/api/Movimiento",
+									"host": [
+										"{{urlCuenta}}"
+									],
+									"path": [
+										"api",
+										"Movimiento"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reportes",
+			"item": [
+				{
+					"name": "Reportes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlCuenta}}/api/reportes?fechaInicio=01-01-2024&fechaFin=01-12-2024&identificacion=1742948690",
+							"host": [
+								"{{urlCuenta}}"
+							],
+							"path": [
+								"api",
+								"reportes"
+							],
+							"query": [
+								{
+									"key": "fechaInicio",
+									"value": "01-01-2024"
+								},
+								{
+									"key": "fechaFin",
+									"value": "01-12-2024"
+								},
+								{
+									"key": "identificacion",
+									"value": "1742948690"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "urlCliente",
+			"value": "https://localhost:7185",
+			"type": "string"
+		},
+		{
+			"key": "urlCuenta",
+			"value": "https://localhost:7153",
+			"type": "string"
+		}
+	]
+}

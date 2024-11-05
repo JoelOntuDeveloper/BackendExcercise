@@ -61,9 +61,6 @@ namespace Customers.API.Controllers {
         [HttpGet("searchByIdentificacion/{identificacion}")]
         public async Task<ActionResult<Cliente>> GetClienteByIdentificacion(string identificacion) {
             var cliente = await _clienteService.GetClienteByIdentificacionAsync(identificacion);
-            if (cliente == null) {
-                return NotFound();
-            }
             return Ok(cliente);
         } 
         #endregion
